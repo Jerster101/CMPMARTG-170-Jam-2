@@ -8,9 +8,15 @@ public class PlayerNetwork : NetworkBehaviour
     private readonly NetworkVariable<PlayerNetworkData> _netState = new NetworkVariable<PlayerNetworkData>(writePerm: NetworkVariableWritePermission.Owner);
     private Vector3 _vel;
     private float _rotVel;
+    //private bool _attacking;
+    //private static GameObject hitbox;
     [SerializeField] private float _cheapInterpolationTime = 0.1f;
 
-    // Update is called once per frame
+    //private void Start()
+    //{
+        //hitbox = gameObject.transform.GetChild(1).gameObject;
+    //}
+
     void Update()
     {
         if (IsOwner)
@@ -18,7 +24,8 @@ public class PlayerNetwork : NetworkBehaviour
             _netState.Value = new PlayerNetworkData()
             {
                 Position = transform.position,
-                Rotation = transform.rotation.eulerAngles
+                Rotation = transform.rotation.eulerAngles,
+                //Attacking = hitbox.activeInHierarchy
             };
         }
         else
@@ -28,6 +35,8 @@ public class PlayerNetwork : NetworkBehaviour
                 0,
                 Mathf.SmoothDampAngle(transform.rotation.eulerAngles.y, _netState.Value.Rotation.y, ref _rotVel, _cheapInterpolationTime),
                 0);
+            //hitbox.SetActive(_attacking);
+            //Debug.Log(_attacking);
         }
     }
 
@@ -35,6 +44,7 @@ public class PlayerNetwork : NetworkBehaviour
     {
         private float _x, _z;
         private short _yRot;
+        //private bool _attacking;
 
         internal Vector3 Position
         {
@@ -52,11 +62,18 @@ public class PlayerNetwork : NetworkBehaviour
             set => _yRot = (short)value.y;
         }
 
+        //internal bool Attacking
+       // {
+            //get => _attacking;
+            //set => _attacking = hitbox.activeInHierarchy;
+        //}
+
         public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
         {
             serializer.SerializeValue(ref _x);
             serializer.SerializeValue(ref _z);
             serializer.SerializeValue(ref _yRot);
+            //serializer.SerializeValue(ref _attacking);
         }
     }
 

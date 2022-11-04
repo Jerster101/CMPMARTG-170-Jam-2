@@ -5,7 +5,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638028567906945423
+      ticks: 638029540535494655
     m_Hash: 717686808
   m_LockFileStatus:
     m_FilePath: C:/Users/Jeremy/Desktop/Project/CMPMARTG-170-Jam-2/Packages/packages-lock.json
@@ -13,7 +13,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638028567906980139
+      ticks: 638029540547076251
     m_Hash: 3284725763
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}

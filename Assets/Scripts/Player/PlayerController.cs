@@ -26,6 +26,14 @@ public class PlayerController : NetworkBehaviour
         {
             Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
+        } 
+    }
+
+    private void OnTriggerEnter(Collider col)
+    {
+        if (col.tag == "Weapon")
+        {
+            transform.GetComponent<Rigidbody>().velocity = new Vector3(10, 0, 0);
         }
     }
 }
