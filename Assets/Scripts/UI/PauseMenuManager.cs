@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenuManager : MonoBehaviour
 {
-    public bool menuOpen = false;
+    private bool menuOpen = false;
     public GameObject pMenu;
     public GameObject cMenu1;
     public GameObject cMenu2;
@@ -27,6 +27,16 @@ public class PauseMenuManager : MonoBehaviour
                 cMenu2.SetActive(false);
             }
         }
+    }
+
+    public void OpenMenu()
+    {
+        menuOpen = true;
+    }
+
+    public void CloseMenu()
+    {
+        menuOpen = false;
     }
 
     public void Disconnect()
