@@ -5,6 +5,7 @@ public class PlayerController : NetworkBehaviour
 {
     public float speed;
     public float rotationSpeed;
+    private Vector3 moveDirection;
 
     //Remove player controls if this is not my player
     public override void OnNetworkSpawn()
@@ -33,7 +34,8 @@ public class PlayerController : NetworkBehaviour
     {
         if (col.tag == "Weapon")
         {
-            transform.GetComponent<Rigidbody>().velocity = new Vector3(10, 0, 0);
+            moveDirection = transform.position - col.transform.position;
+            GetComponent<Rigidbody>().AddForce(moveDirection.normalized * 250f);
         }
     }
 }

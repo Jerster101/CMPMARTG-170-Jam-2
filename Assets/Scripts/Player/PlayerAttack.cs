@@ -21,7 +21,7 @@ public class PlayerAttack : NetworkBehaviour
     {
         if (!IsOwner) return;
 
-        if (Input.GetKeyDown("space") && attackTime + attackCooldownLength < Time.time)
+        if ((Input.GetKeyDown("space") || Input.GetKeyDown(KeyCode.JoystickButton0)) && attackTime + attackCooldownLength < Time.time)
         {
             attackTime = Time.time;
             attacking = true;
