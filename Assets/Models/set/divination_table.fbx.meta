@@ -3,7 +3,17 @@ guid: 4bcae3f02743c8d4ebbf62acbf1a3921
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Candle Wax
+    second: {fileID: -3211198530389465084, guid: ee9fa70b395c85d439c095c6248178ac, type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Dark Purple Cloth
+    second: {fileID: -1980738960603513222, guid: ce0f35ba87af0854c8996652f5b2c5fa, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
