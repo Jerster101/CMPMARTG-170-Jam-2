@@ -6,6 +6,7 @@ public class PlayerAttack : NetworkBehaviour
 {
 
     public float attackTime = 0f;
+    public Animation anim;
     private GameObject hitbox;
     private bool attacking = false;
 
@@ -25,14 +26,17 @@ public class PlayerAttack : NetworkBehaviour
         {
             attackTime = Time.time;
             attacking = true;
-            RequestFireServerRpc(attacking);
+            anim.Play("Hitting");
             
+            RequestFireServerRpc(attacking);
+
         }
         if (attacking == true && attackTime + attackLength < Time.time)
         {
             attacking = false;
             RequestFireServerRpc(attacking);
         }
+
     }
 
     [ServerRpc]
@@ -42,7 +46,7 @@ public class PlayerAttack : NetworkBehaviour
     }
 
     [ClientRpc]
-    private void FireClientRpc (bool attacking)
+    private void FireClientRpc(bool attacking)
     {
         if (attacking)
         {
